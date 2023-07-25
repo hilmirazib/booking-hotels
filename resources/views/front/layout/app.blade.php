@@ -102,7 +102,7 @@
                                     </ul>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="blog.html" class="nav-link">Blog</a>
+                                    <a href="{{route('blog')}}" class="nav-link">Blog</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="contact.html" class="nav-link">Contact</a>
@@ -127,7 +127,7 @@
                             <ul class="useful-links">
                                 <li><a href="rooms.html">Rooms & Suites</a></li>
                                 <li><a href="photo-gallery.html">Photo Gallery</a></li>
-                                <li><a href="blog.html">Blog</a></li>
+                                <li><a href="{{route('blog')}}">Blog</a></li>
                                 <li><a href="contact.html">Contact</a></li>
                             </ul>
                         </div>
