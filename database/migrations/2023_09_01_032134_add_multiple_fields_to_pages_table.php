@@ -14,7 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::table('pages', function (Blueprint $table) {
-            $table->integer('about_status')->after('about_content');
+            $table->text('terms_heading')->after('about_status');
+            $table->text('terms_content')->after('terms_heading');
+            $table->integer('terms_status')->after('terms_content');
         });
     }
 
@@ -26,7 +28,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('pages', function (Blueprint $table) {
-            $table->dropColumn('about_status');
+            $table->dropColumn(['terms_heading', 'terms_content', 'terms_status']);
         });
     }
 };
