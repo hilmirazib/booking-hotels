@@ -37,10 +37,20 @@
                     </div>
                     <div class="col-md-6 right-side">
                         <ul class="right">
-                            <li class="menu"><a href="cart.html">Cart</a></li>
-                            <li class="menu"><a href="checkout.html">Checkout</a></li>
-                            <li class="menu"><a href="signup.html">Sign Up</a></li>
-                            <li class="menu"><a href="login.html">Login</a></li>
+                            @if($global_page_data->cart_status == 1)
+                                <li class="menu"><a href="">{{ $global_page_data->cart_heading }} @if(session()->has('cart_room_id'))<sup>{{ count(session()->get('cart_room_id')) }}</sup>@endif</a></li>
+                            @endif
+                            @if($global_page_data->checkout_status == 1)
+                                <li class="menu"><a href="">{{ $global_page_data->checkout_heading }}</a></li>
+                            @endif
+
+                            @if($global_page_data->signup_status == 1)
+                                <li class="menu"><a href="">{{ $global_page_data->signup_heading }}</a></li>
+                            @endif
+
+                            @if($global_page_data->signin_status == 1)
+                                <li class="menu"><a href="">{{ $global_page_data->signin_heading }}</a></li>
+                            @endif
                         </ul>
                     </div>
                 </div>
@@ -92,20 +102,32 @@
                                         </li>
                                     </ul>
                                 </li>
+                                @if($global_page_data->photo_gallery_status == 1 || $global_page_data->video_gallery_status == 1)
                                 <li class="nav-item">
                                     <a href="javascript:void;" class="nav-link dropdown-toggle">Gallery</a>
                                     <ul class="dropdown-menu">
+
+                                        @if($global_page_data->photo_gallery_status == 1)
                                         <li class="nav-item">
-                                            <a href="{{ route('photo_gallery') }}" class="nav-link">Photo Gallery</a>
+                                            <a href="{{ route('photo_gallery') }}" class="nav-link">{{ $global_page_data->photo_gallery_heading }}</a>
                                         </li>
+                                        @endif
+                                        
+                                        @if($global_page_data->video_gallery_status == 1)
                                         <li class="nav-item">
-                                            <a href="{{ route('video_gallery') }}" class="nav-link">Video Gallery</a>
+                                            <a href="{{ route('video_gallery') }}" class="nav-link">{{ $global_page_data->video_gallery_heading }}</a>
                                         </li>
+                                        @endif
+
                                     </ul>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="{{route('blog')}}" class="nav-link">Blog</a>
-                                </li>
+                                @endif
+                                
+                                @if($global_page_data->blog_status == 1)
+                                    <li class="nav-item">
+                                        <a href="{{ route('blog') }}" class="nav-link">{{ $global_page_data->blog_heading }}</a>
+                                    </li>
+                                @endif
                                 @if($global_page_data->contact_status == 1)
                                     <li class="nav-item">
                                         <a href="{{ route('contact') }}" class="nav-link">{{ $global_page_data->contact_heading }}</a>
@@ -130,10 +152,17 @@
                             <h2 class="heading">Site Links</h2>
                             <ul class="useful-links">
                                 <li><a href="rooms.html">Rooms & Suites</a></li>
-                                <li><a href="photo-gallery.html">Photo Gallery</a></li>
-                                <li><a href="{{route('blog')}}">Blog</a></li>
+                                @if($global_page_data->photo_gallery_status == 1)
+                                    <li><a href="{{ route('photo_gallery') }}">{{ $global_page_data->photo_gallery_heading }}</a></li>
+                                @endif
+                                @if($global_page_data->video_gallery_status == 1)
+                                    <li><a href="{{ route('video_gallery') }}">{{ $global_page_data->video_gallery_heading }}</a></li>
+                                @endif
+                                @if($global_page_data->blog_status == 1)
+                                    <li><a href="{{ route('blog') }}">{{ $global_page_data->blog_heading }}</a></li>
+                                @endif
                                 @if($global_page_data->contact_status == 1)
-                                <   li><a href="{{ route('contact') }}">{{ $global_page_data->contact_heading }}</a></>
+                                    <li><a href="{{ route('contact') }}">{{ $global_page_data->contact_heading }}</a></li>
                                 @endif
                             </ul>
                         </div>
@@ -148,6 +177,9 @@
                                 @endif
                                 @if($global_page_data->privacy_status == 1)
                                     <li><a href="{{ route('privacy') }}">{{ $global_page_data->privacy_heading }}</a></li>
+                                @endif
+                                @if($global_page_data->faq_status == 1)
+                                    <li><a href="{{ route('faq') }}">{{ $global_page_data->faq_heading }}</a></li>
                                 @endif
                                 <li><a href="disclaimer.html">Disclaimer</a></li>
                             </ul>

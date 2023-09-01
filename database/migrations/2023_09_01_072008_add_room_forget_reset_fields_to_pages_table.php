@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::table('pages', function (Blueprint $table) {
-            $table->text('contact_heading')->after('privacy_status');
-            $table->text('contact_map')->nullable()->after('contact_heading');
-            $table->integer('contact_status')->after('contact_map');
+            $table->text('room_heading')->after('signin_status');
+            $table->text('forget_password_heading')->after('room_heading');
+            $table->text('reset_password_heading')->after('forget_password_heading');
         });
     }
 
@@ -28,7 +28,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('pages', function (Blueprint $table) {
-            $table->dropColumn(['contact_heading', 'contact_map', 'contact_status']);
+            $table->dropColumn(['room_heading', 'forget_password_heading', 'reset_password_heading']);
         });
     }
 };

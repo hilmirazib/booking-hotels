@@ -14,9 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::table('pages', function (Blueprint $table) {
-            $table->text('contact_heading')->after('privacy_status');
-            $table->text('contact_map')->nullable()->after('contact_heading');
-            $table->integer('contact_status')->after('contact_map');
+            $table->text('signup_heading')->after('payment_heading');
+            $table->integer('signup_status')->after('signup_heading');
+            $table->text('signin_heading')->after('signup_status');
+            $table->integer('signin_status')->after('signin_heading');
         });
     }
 
@@ -28,7 +29,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('pages', function (Blueprint $table) {
-            $table->dropColumn(['contact_heading', 'contact_map', 'contact_status']);
+            $table->dropColumn(['signup_heading', 'signup_status', 'signin_heading', 'signin_status']);
         });
     }
 };

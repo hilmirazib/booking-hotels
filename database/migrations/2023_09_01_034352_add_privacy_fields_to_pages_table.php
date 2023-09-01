@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('pages', function (Blueprint $table) {
-            $table->text('privacy_heading')->after('terms_heading');
+            $table->text('privacy_heading')->after('terms_status');
             $table->text('privacy_content')->after('privacy_heading');
             $table->integer('privacy_status')->after('privacy_content');
         });
