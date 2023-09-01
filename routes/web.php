@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminFaqController;
 use App\Http\Controllers\Admin\AdminFeatureController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminLoginController;
+use App\Http\Controllers\Admin\AdminPageController;
 use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Admin\AdminPhotoController;
 use App\Http\Controllers\Admin\AdminProfileController;
@@ -98,3 +99,6 @@ Route::post('/admin/faq/store', [AdminFaqController::class, 'store'])->name('adm
 Route::get('/admin/faq/edit/{id}', [AdminFaqController::class, 'edit'])->name('admin_faq_edit');
 Route::post('/admin/faq/update/{id}', [AdminFaqController::class, 'update'])->name('admin_faq_update');
 Route::get('/admin/faq/delete/{id}', [AdminFaqController::class, 'delete'])->name('admin_faq_delete');
+
+Route::get('/admin/page/about', [AdminPageController::class, 'about'])->name('admin_page_about');
+Route::post('/admin/page/about/update', [AdminPageController::class, 'about_update'])->name('admin_page_about_update');
